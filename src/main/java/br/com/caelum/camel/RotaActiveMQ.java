@@ -8,7 +8,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.http4.HttpMethods;
 import org.apache.camel.impl.DefaultCamelContext;
 
-public class RotaEnviaPedidos {
+public class RotaActiveMQ {
 
 	public static void main(String[] args) throws Exception {
 
@@ -22,6 +22,7 @@ public class RotaEnviaPedidos {
 			public void configure() throws Exception {
 				
 				from("file:pedidos?noop=true").
+						log("ActiveMQ..").
 				to("activemq:queue:pedidos");
 				
 			}
